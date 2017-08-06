@@ -1,0 +1,35 @@
+add a single file
+remove a single file
+figure out local changes to repo
+add a directory recursively
+remove a directory recursively
+create a branch from master
+submit changes to master
+submit changes to the branch
+commit differences to a branch vs master
+checkout a branch
+checkout a file of specific date, tag, revision
+update a branch to the latest
+update the repo to the master
+figure out differences between branch and the master
+creact a nested branches
+differences between two branches
+merge in the branches
+resolving the conflicts in local repo vs master
+switching the difference branches in the same repo
+delete a branch
+
+git specific concepts - submodule
+   - How to use the submodules
+   - what's the tag for the submodule
+   - how to get updated submodules
+   - how to create/delete and refer to a specific version of the submodules
+
+*** Make notes for each command and make the aliases for handy git commands ***
+
+Configuration:
+1. config - handy config and default setup
+2. init, clone, log, reset, clone, fork, status, stash, push, commit
+3. .gitconfig, .gitcredentials, .gitmodules
+4. 
+
