@@ -37,3 +37,20 @@ nmap <F8>   :TrinityToggleAll<CR>
 "nmap <F11>  :TrinityToggleNERDTree<CR>
 "nmap <F9>   :TrinityToggleSourceExplorer<CR> 
 :nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+"" turn on completion in comments
+let g:ycm_complete_in_comments=1
+"" load ycm conf by default
+let g:ycm_confirm_extra_conf=0
+"" turn on tag completion
+let g:ycm_collect_identifiers_from_tags_files=1
+"" only show completion as a list instead of a sub-window
+set completeopt-=preview
+"" start completion from the first character
+let g:ycm_min_num_of_chars_for_completion=1
+"" don't cache completion items
+let g:ycm_cache_omnifunc=0
+"" complete syntax keywords
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
