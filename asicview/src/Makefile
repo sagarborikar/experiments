@@ -2,10 +2,8 @@
 
 TOPDIR = ..
 CAPTOPDIR = ../..
-
-LIBCAP = $(TOPDIR)/../gen/capri/verif/common/manifest/
 SKNOB = /home/asic/tools/src/0.25/
-LIBSKNOB = /home/asic/tools/src/0.25/x86_64/lib64/
+
 
 LCFLAGS = \
 	-I$(CAPTOPDIR)/capri/model/cap_base \
@@ -39,19 +37,28 @@ LCFLAGS = \
 	-I$(CAPTOPDIR)/capri/model/cap_txd \
 	-I$(CAPTOPDIR)/capri/model/cap_txs \
 	-I$(CAPTOPDIR)/capri/model/cap_wa \
+	-I$(CAPTOPDIR)/ip/verif/pcpp \
+	-I$(CAPTOPDIR)/capri/model/cap_he/readonly \
 	-I$(SKNOB)/include \
 	-I$(TOPDIR)/include \
 	$(NULL)
 
 PROGRAM = asicview
 
-#LIBRARIES = -l$(LIBCAP)/common_cc -l$(LIBCAP)/top_csr_compile -l$(SKNOB)/sknobs
+LDFLAGS = \
+	/home/sborikar/asic/gen/capri/verif/common/manifest/libcommon_cc.so \
+	/home/sborikar/asic/gen/capri/verif/common/manifest/libtop_csr_compile.so \
+	/home/asic/tools/src/0.25/x86_64/lib64/libsknobs.so \
+	$(NULL)
 
-LCXXFLAGS = $(LCFLAGS) -Wno-write-strings
+SYSTEM_LIBRARIES = -lreadline
+
+LCXXFLAGS = $(LCFLAGS) -Wno-write-strings -g
 
 SOURCES = \
 	asicview.cc \
 	regcmd.cc \
+    cli.cc \
 	$(NULL)
 
 include $(TOPDIR)/make/Makefile.inc

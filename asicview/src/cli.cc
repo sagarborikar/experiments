@@ -15,7 +15,7 @@ dupstr (char *s) {
     char *r;
 
     r = (char *) calloc(strlen(s) + 1, 1);
-    assert(r == NULL);
+    assert(r != NULL);
 
     strcpy (r, s);
     return (r);
@@ -44,6 +44,7 @@ cmd_completion( const char * text , int start,  int end)
     else
         rl_bind_key('\t',rl_abort);
 
+    rl_attempted_completion_over = 1;
     return (matches);
 
 }
@@ -64,7 +65,7 @@ asicview_cli(void)
     while((buf = readline("\n asicview> "))!=NULL) {
         //enable auto-complete
         rl_bind_key('\t',rl_complete);
-        if (strcmp(buf,"quit")==0)
+        if (strncmp(buf,"quit", 4)==0)
             exit(0);
         process_cmd(buf);
     }

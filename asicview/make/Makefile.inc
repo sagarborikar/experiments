@@ -183,9 +183,9 @@ all: $(LPREALL) $(GENTARGET) $(LPOSTALL)
 # Deduce PROGRAM type from SOURCES.
 # If any C++ sources, link with CXX else CC.
 ifeq ("$(filter %.cc,$(SOURCES))","")
-PGMLINK = $(CC) $(LLDFLAGS)
+PGMLINK = $(CC) $(LDFLAGS)
 else
-PGMLINK = $(CXX) $(CXXFLAGS) $(LLDFLAGS)
+PGMLINK = $(CXX) $(CXXFLAGS) $(LDFLAGS)
 endif
 
 quiet_cmd_pgmlink = LINK    $(PROGRAM)

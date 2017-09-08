@@ -58,14 +58,19 @@ get_cmd_list(char **ptr)
     for (int i = 0; i < ncmds; i++) {
         ptr[i] = (char *)calloc(strlen(iter->first) + 1, 1);
         assert(ptr[i] != nullptr);
-        strcpy(ptr[i], iter->first);         
+        strcpy(ptr[i], iter->first);
     }
 }
 
-cap_top_csr_t cap_top;
+
 
 int main()
 {
+    cap_top_csr_t *cap_top = new cap_top_csr_t("cap_top");
+    cap_top->init(0);
+    cap_top->set_chip_id(0);
+    // CAP_BLK_REG_MODEL_REGISTER(cap_top_csr_t, 0, 0, cap0_ptr);
+
     vector<cap_csr_base *> cap_csr;
     struct cmd_info *cmd_iter = &__start_asicviewcmds;
 
@@ -80,20 +85,19 @@ int main()
         cout << iter->first << endl;
         iter->second(5, argv);
     }
-    std::string str("cap_ppa_csr_sta_fifo", strlen("cap_ppa_csr_sta_fifo"));
-    cap_csr_base *csr_base = cap_top.search_csr_by_name(str);
+    // std::string str("cap_ppa_csr_sta_fifo", strlen("cap_ppa_csr_sta_fifo"));
+    std::string str("pct.mpu[3].sta_mpu[0]");
+    cap_csr_base *csr_base = cap_top->search_csr_by_name(str);
     if (csr_base != nullptr) {
-        cout << "received element" << csr_base->get_name() << endl;
+        cout << "received element" << csr_base->get_hier_path() << endl;
     }
 
-	cap_csr = cap_top.get_children_string(str);
+	cap_csr = cap_top->get_children_string(str);
 	vector<cap_csr_base *>::iterator it;
-    cout << "received elements: " <<  cap_csr.size() << endl;
 
 
 	for (it = cap_csr.begin(); it != cap_csr.end(); it++) {
-            std::cout << "printing get_name" << endl;
-        std::cout << (*it)->get_name() << endl;
+        std::cout << (*it)->get_hier_path() << endl;
 	}
     asicview_cli();
 
