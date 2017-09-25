@@ -1,0 +1,9 @@
+alias cls='clear'
+alias sv='/home/sborikar/tools/vim/bin/vim'
+alias setremote='function _setremote() { git remote add upstream git@github.com:pensando/"$1".git; }; _setremote'
+alias sync_fork='git fetch upstream && git co master && git merge upstream/master && git push origin'
+alias sync_branch='git co $1 && git merge origin && git push origin $1'
+alias sub_rec='git submodule update --init --recursive'
+export PATH=$PATH:/home/sborikar/capsim/gen/bin
+alias mycscope='find . -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" -o -name "*.s" -o -name "*.p4" > cscope.files && cscope -R -b -i cscope.files'
+alias ll='ls -lath'
