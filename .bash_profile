@@ -1,5 +1,6 @@
 alias cls='clear'
 alias sv='/home/sborikar/tools/vim/bin/vim'
+alias forkclone='function _forkclone() { git clone git@github.com:sagarborikar/"$1".git; cd $1; }; _forkclone'
 alias setremote='function _setremote() { git remote add upstream git@github.com:pensando/"$1".git; }; _setremote'
 alias sync_fork='git fetch upstream && git co master && git merge upstream/master && git push origin'
 alias sync_branch='git co $1 && git merge origin && git push origin $1'
