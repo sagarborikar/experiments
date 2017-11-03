@@ -1,0 +1,11 @@
+  179  mkdir platform-linux
+  180  cd platform-linux
+  181  git init
+  182  git remote add origin https://github.com/pensando/platform-linux
+  183  git fetch origin
+  184  git remote add upstreamhttps://git.linaro.org/kernel/linux-linaro-stable.git/
+  185  git remote add upstream https://git.linaro.org/kernel/linux-linaro-stable.git/
+  186  git fetch upstream
+  187  git checkout -b master lsk-v4.9-17.06-rt
+  188  ls
+  189  git push -u -f origin master
